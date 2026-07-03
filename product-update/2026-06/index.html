@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>プロダクトアップデート 2026年6月 | PLAINER</title>
+<style>
+  :root{
+    /* brand blue ramp */
+    --b-50:#F0F2FD; --b-100:#E6E9FB; --b-200:#A9B1F3; --b-500:#4E62E2; --b-600:#3C4BBE; --b-800:#2D3A96;
+    /* brand green ramp */
+    --g-50:#E9FBF2; --g-100:#C8F4DF; --g-300:#A4EBC1; --g-400:#72D6A0; --g-600:#4EB685;
+    /* neutrals, biased slightly toward brand blue */
+    --n-000:#ffffff; --n-050:#F7F8FC; --n-100:#EDEFF7; --n-200:#DCE0EE;
+    --ink:#1B2036; --muted:#5B6180; --faint:#8890AD;
+    --alert:#CC0000; --alert-bg:#FBEDEC;
+    /* semantic tokens */
+    --bg:var(--n-000); --surface:var(--n-050); --card:var(--n-000);
+    --line:var(--n-200); --hairline:var(--n-100);
+    --accent:var(--b-500); --accent-deep:var(--b-800); --go:var(--g-600); --go-deep:#2F8F66;
+    --tint-blue:var(--b-50); --tint-green:var(--g-50);
+    --shadow:0 1px 2px rgba(27,32,54,.05), 0 12px 30px -14px rgba(45,58,150,.22);
+    --shadow-sm:0 1px 2px rgba(27,32,54,.06), 0 4px 12px -8px rgba(45,58,150,.18);
+    --radius:16px; --radius-sm:10px;
+    --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --measure:64ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0C0E1C; --surface:#12142A; --card:#161936;
+      --line:#282C4C; --hairline:#20233F;
+      --ink:#ECEEFA; --muted:#A0A7C9; --faint:#767DA0;
+      --accent:#8E9BF6; --accent-deep:#C3CBFF; --go:#6FD6A4; --go-deep:#9BE7C4;
+      --tint-blue:#171B3A; --tint-green:#122A20;
+      --alert:#FF6B6B; --alert-bg:#2A1618;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -18px rgba(0,0,0,.6);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.35), 0 6px 16px -10px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:var(--n-000); --surface:var(--n-050); --card:var(--n-000);
+    --line:var(--n-200); --hairline:var(--n-100);
+    --ink:#1B2036; --muted:#5B6180; --faint:#8890AD;
+    --accent:var(--b-500); --accent-deep:var(--b-800); --go:var(--g-600); --go-deep:#2F8F66;
+    --tint-blue:var(--b-50); --tint-green:var(--g-50);
+    --alert:#CC0000; --alert-bg:#FBEDEC;
+    --shadow:0 1px 2px rgba(27,32,54,.05), 0 12px 30px -14px rgba(45,58,150,.22);
+    --shadow-sm:0 1px 2px rgba(27,32,54,.06), 0 4px 12px -8px rgba(45,58,150,.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C0E1C; --surface:#12142A; --card:#161936;
+    --line:#282C4C; --hairline:#20233F;
+    --ink:#ECEEFA; --muted:#A0A7C9; --faint:#767DA0;
+    --accent:#8E9BF6; --accent-deep:#C3CBFF; --go:#6FD6A4; --go-deep:#9BE7C4;
+    --tint-blue:#171B3A; --tint-green:#122A20;
+    --alert:#FF6B6B; --alert-bg:#2A1618;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -18px rgba(0,0,0,.6);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35), 0 6px 16px -10px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+    line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.3;text-wrap:balance;letter-spacing:.01em}
+  p{margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+
+  /* ---- top bar ---- */
+  header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--hairline)}
+  .top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.06em;color:var(--accent-deep)}
+  .logo svg{display:block}
+  .top nav{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .navlink{font-size:13px;font-weight:600;color:var(--muted);padding:8px 12px;border-radius:8px;text-decoration:none}
+  .navlink:hover{color:var(--ink);background:var(--surface)}
+  .toggle{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--card);
+    color:var(--muted);cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .toggle:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden;padding:76px 0 56px;
+    background:
+      radial-gradient(120% 90% at 88% -10%, var(--tint-green) 0%, transparent 46%),
+      radial-gradient(120% 100% at 6% 0%, var(--tint-blue) 0%, transparent 52%);
+    border-bottom:1px solid var(--hairline)}
+  .hero .wrap{position:relative}
+  .hero .kb{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .badge-month{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;
+    color:var(--accent-deep);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px;box-shadow:var(--shadow-sm)}
+  .badge-month .dot{width:7px;height:7px;border-radius:50%;background:var(--go);box-shadow:0 0 0 4px color-mix(in srgb,var(--go) 22%,transparent)}
+  .hero h1{font-size:clamp(38px,6vw,60px);font-weight:800;color:var(--accent-deep);letter-spacing:-.01em;line-height:1.12}
+  .hero h1 .yr{color:var(--ink)}
+  .hero .lede{margin-top:22px;max-width:40ch;font-size:clamp(18px,2.4vw,22px);font-weight:600;color:var(--ink)}
+  .hero .lede b{color:var(--go-deep);font-weight:800}
+  .hero .sub{margin-top:14px;max-width:52ch;color:var(--muted);font-size:15px}
+  .hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border-radius:12px;
+    padding:13px 20px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:.18s}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .btn-ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-meta{margin-top:40px;display:flex;flex-wrap:wrap;gap:28px;padding-top:24px;border-top:1px solid var(--hairline)}
+  .hstat .n{font-size:26px;font-weight:800;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1}
+  .hstat .l{font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.02em}
+
+  /* ---- section shells ---- */
+  main{padding:16px 0 40px}
+  .sec-head{padding:56px 0 8px}
+  .sec-flag{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:14px;padding:8px 15px;border-radius:999px}
+  .sec-flag.ready{color:var(--go-deep);background:var(--tint-green);border:1px solid color-mix(in srgb,var(--go) 40%,transparent)}
+  .sec-flag.paid{color:var(--alert);background:var(--alert-bg);border:1px solid color-mix(in srgb,var(--alert) 34%,transparent)}
+  .sec-head h2{margin-top:18px;font-size:clamp(24px,3.4vw,32px);font-weight:800;color:var(--ink)}
+  .sec-head p{margin-top:10px;color:var(--muted);max-width:var(--measure)}
+  .paid-lead{margin-top:14px;background:var(--alert-bg);border:1px solid color-mix(in srgb,var(--alert) 26%,transparent);
+    color:var(--ink);padding:14px 18px;border-radius:12px;font-size:14px;max-width:var(--measure)}
+  .paid-lead b{color:var(--alert)}
+
+  /* ---- index chips ---- */
+  .index{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .index a{display:flex;gap:12px;align-items:center;text-decoration:none;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px;box-shadow:var(--shadow-sm);transition:.18s}
+  .index a:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .index .ix{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--tint-blue);color:var(--accent-deep);
+    font-weight:800;font-size:13px;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+  .index .tx{font-size:13.5px;font-weight:600;color:var(--ink)}
+
+  /* ---- feature block ---- */
+  .feat{padding:40px 0;border-top:1px solid var(--hairline);scroll-margin-top:80px}
+  .feat-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:44px;align-items:start}
+  .feat.rev .feat-grid{direction:rtl}
+  .feat.rev .feat-grid>*{direction:ltr}
+  .feat-txt .num{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+  .feat-txt .num b{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+  .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px}
+  .tag.new{color:#fff;background:var(--go-deep)}
+  .tag.imp{color:var(--accent-deep);background:var(--tint-blue);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+  .feat-txt h3{font-size:23px;font-weight:800;color:var(--accent-deep)}
+  .feat-txt .body{margin-top:12px;color:var(--muted);font-size:15px;max-width:46ch}
+  .points{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+  .pt{display:flex;gap:12px;align-items:flex-start}
+  .pt .ico{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--tint-green);color:var(--go-deep);
+    display:grid;place-items:center;margin-top:2px}
+  .pt .ico svg{width:13px;height:13px}
+  .pt .pttx{font-size:14.5px;color:var(--ink)}
+  .pt .pttx b{color:var(--accent-deep);font-weight:700}
+
+  /* ---- demo frame ---- */
+  .demo{position:relative}
+  .demo-label{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;font-weight:700;color:var(--go-deep)}
+  .demo-label .pulse{width:8px;height:8px;border-radius:50%;background:var(--go);position:relative}
+  .demo-label .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--go);opacity:.5;animation:ping 1.8s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+  .frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+  .chrome{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--hairline)}
+  .chrome .dots{display:flex;gap:6px}
+  .chrome .dots i{width:10px;height:10px;border-radius:50%;background:var(--n-200)}
+  :root[data-theme="dark"] .chrome .dots i{background:#3a3f63}
+  .chrome .url{flex:1;font-size:11px;color:var(--faint);background:var(--card);border:1px solid var(--hairline);
+    border-radius:6px;padding:4px 10px;text-align:center;letter-spacing:.02em}
+  .chrome .live{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--go-deep);
+    background:var(--tint-green);padding:3px 8px;border-radius:5px}
+  .screen{padding:18px;min-height:280px;background:
+    linear-gradient(180deg,var(--card),var(--card)),
+    repeating-linear-gradient(45deg,transparent,transparent 11px,var(--hairline) 11px,var(--hairline) 12px);
+    position:relative}
+  .try{position:absolute;right:14px;bottom:14px;z-index:6;display:inline-flex;align-items:center;gap:8px;
+    background:var(--go-deep);color:#fff;font-weight:800;font-size:13px;border:none;border-radius:999px;
+    padding:11px 18px;cursor:pointer;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--go-deep) 80%,black);transition:.18s}
+  .try:hover{transform:translateY(-2px)}
+  .try svg{width:13px;height:13px}
+
+  /* real PLAINER demo embed overlay: covers the mock when it loads (production);
+     stays hidden when blocked by the Artifact CSP so the mock shows as preview */
+  .pl-demo{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;
+    transition:opacity .45s ease;background:var(--card);z-index:8}
+  .pl-demo.loaded{opacity:1}
+  .embed-tag{position:absolute;left:14px;top:12px;z-index:4;font-size:10px;font-weight:800;letter-spacing:.06em;
+    color:var(--accent-deep);background:var(--tint-blue);border:1px solid color-mix(in srgb,var(--accent) 26%,transparent);
+    padding:3px 9px;border-radius:6px;pointer-events:none;display:inline-flex;align-items:center;gap:6px}
+  .embed-tag .rec{width:6px;height:6px;border-radius:50%;background:var(--go);animation:blink 1.4s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+  /* auto-playing cursor: makes the mock look like a live demo in the preview */
+  .cursor{position:absolute;z-index:9;width:19px;height:19px;left:50%;top:60%;pointer-events:none;
+    transition:left .8s cubic-bezier(.4,.1,.2,1),top .8s cubic-bezier(.4,.1,.2,1);
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+  .cursor svg{width:100%;height:100%;display:block}
+  .cursor::after{content:"";position:absolute;inset:-7px;border-radius:50%;
+    background:color-mix(in srgb,var(--go) 45%,transparent);opacity:0}
+  .cursor.click::after{animation:tap .45s ease-out}
+  @keyframes tap{0%{opacity:.6;transform:scale(.3)}100%{opacity:0;transform:scale(1.5)}}
+  .screen.live .cursor{display:none}
+
+  /* ambient sweep = "playing" feel across every demo frame */
+  .demo .screen::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:linear-gradient(105deg,transparent 42%,color-mix(in srgb,var(--go) 12%,transparent) 50%,transparent 58%);
+    transform:translateX(-125%);animation:sweep 5s ease-in-out infinite}
+  .screen.live::after{display:none}
+  @keyframes sweep{0%,14%{transform:translateX(-125%)}70%,100%{transform:translateX(125%)}}
+  #f2 .demo .screen::after{animation-delay:.7s}
+  #f3 .demo .screen::after{animation-delay:1.3s}
+  #f4 .demo .screen::after{animation-delay:.3s}
+  #f5 .demo .screen::after{animation-delay:1s}
+  #f6 .demo .screen::after{animation-delay:1.7s}
+  #p1 .demo .screen::after{animation-delay:.5s}
+
+  /* dashboard demo internals */
+  .db-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .db-tab{font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);cursor:pointer;transition:.15s}
+  .db-tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+  .kpi{background:var(--surface);border:1px solid var(--hairline);border-radius:10px;padding:11px 12px}
+  .kpi .kl{font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+  .kpi .kv{font-size:20px;font-weight:800;color:var(--accent-deep);font-variant-numeric:tabular-nums;margin-top:3px;line-height:1}
+  .kpi .kd{font-size:10px;font-weight:700;color:var(--go-deep);margin-top:3px}
+  .chart{display:flex;align-items:flex-end;gap:10px;height:110px;padding:12px 6px 0;border-top:1px dashed var(--line)}
+  .bar{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--b-200),var(--accent));
+    transition:height .7s cubic-bezier(.2,.7,.2,1);min-height:6px;position:relative}
+  .bar:nth-child(3n+2){background:linear-gradient(180deg,var(--g-300),var(--go))}
+  .bar span{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+  .chart-x{display:flex;gap:10px;margin-top:8px}
+  .chart-x span{flex:1;text-align:center;font-size:10px;color:var(--faint)}
+
+  /* generic mock UI (form / list / settings) */
+  .mock{display:flex;flex-direction:column;gap:10px}
+  .mrow{background:var(--surface);border:1px solid var(--hairline);border-radius:9px;padding:11px 13px;display:flex;align-items:center;gap:10px}
+  .mrow .ml{font-size:12.5px;font-weight:600;color:var(--ink)}
+  .mrow .mspace{flex:1}
+  .field{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:7px;padding:6px 10px;min-width:120px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .chip{font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--tint-green);color:var(--go-deep)}
+  .chip.blue{background:var(--tint-blue);color:var(--accent-deep)}
+  .switch{width:38px;height:22px;border-radius:999px;background:var(--go);position:relative;flex:0 0 auto}
+  .switch::after{content:"";position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:#fff}
+  .balloon{position:relative;background:var(--accent);color:#fff;border-radius:12px;padding:12px 14px;font-size:12.5px;font-weight:600;max-width:220px;box-shadow:var(--shadow)}
+  .balloon::after{content:"";position:absolute;left:26px;bottom:-8px;border:8px solid transparent;border-top-color:var(--accent);border-bottom:0}
+  .ghostui{height:14px;border-radius:5px;background:var(--hairline)}
+  .ghostui.w60{width:60%}.ghostui.w40{width:40%}.ghostui.w80{width:80%}
+
+  /* footer cta */
+  .cta{margin-top:20px;padding:56px 0;background:
+      radial-gradient(100% 120% at 100% 0%, var(--tint-green) 0%, transparent 44%),
+      var(--accent-deep);color:#fff;border-radius:24px}
+  :root[data-theme="dark"] .cta,:root:not([data-theme="light"]) .cta{}
+  .cta .wrap{text-align:center}
+  .cta h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;color:#fff}
+  .cta p{margin:14px auto 0;max-width:44ch;color:#D6DAF6}
+  .cta .row{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-white{background:#fff;color:var(--accent-deep)}
+  .btn-white:hover{background:#EDEFFB}
+  .btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+  .btn-line:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  footer.foot{padding:34px 0;color:var(--muted);font-size:12.5px}
+  footer.foot .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+
+  .note{margin:26px 0 0;padding:14px 16px;border:1px dashed var(--line);border-radius:12px;background:var(--surface);
+    color:var(--muted);font-size:12.5px;max-width:var(--measure)}
+  .note b{color:var(--accent-deep)}
+
+  [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    .feat-grid{grid-template-columns:1fr;gap:26px}
+    .feat.rev .feat-grid{direction:ltr}
+    .kpis{grid-template-columns:repeat(3,1fr)}
+    .top nav .navlink{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    [data-reveal]{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="logo" aria-label="PLAINER">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M7 4h9.5a7 7 0 0 1 0 14H12v8H7V4Z" fill="none" stroke="#4EB685" stroke-width="3.4" stroke-linejoin="round"/>
+        <circle cx="19" cy="11" r="3.3" fill="#4E62E2"/>
+      </svg>
+      PLAINER
+    </span>
+    <nav>
+      <a class="navlink" href="#ready">すぐ使える機能</a>
+      <a class="navlink" href="#paid">要契約の機能</a>
+      <button class="toggle" id="tg" aria-label="テーマ切替" title="ライト / ダーク">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kb">
+      <span class="badge-month"><span class="dot"></span>PRODUCT UPDATE ・ 2026.06</span>
+    </div>
+    <h1>プロダクトアップデート<br><span class="yr">2026年6月</span></h1>
+    <p class="lede">今月の新機能を、読むだけじゃなく<b>その場で触れます。</b></p>
+    <p class="sub">7つのアップデートを操作デモ付きでご紹介します。気になる機能はページ上でそのまま動かして、使い心地を確かめてください。</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#ready">アップデートを見る
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hstat"><div class="n">6</div><div class="l">すぐ使える新機能・改善</div></div>
+      <div class="hstat"><div class="n">1</div><div class="l">別途契約でご利用可能</div></div>
+      <div class="hstat"><div class="n">7</div><div class="l">触れる操作デモ</div></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <!-- READY SECTION -->
+    <div class="sec-head" id="ready" data-reveal>
+      <span class="sec-flag ready">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        すぐにご利用いただけます（追加のご契約は不要）
+      </span>
+      <h2>そのまま使える 6つのアップデート</h2>
+      <p>すべてのお客様が、追加のご契約なしでそのままご利用いただけます。各機能はデモを触って確かめられます。</p>
+      <div class="index">
+        <a href="#f1"><span class="ix">1</span><span class="tx">コンテンツ分析ダッシュボード</span></a>
+        <a href="#f2"><span class="ix">2</span><span class="tx">リードゲート（フォーム）の強化</span></a>
+        <a href="#f3"><span class="ix">3</span><span class="tx">ガイド表現の強化</span></a>
+        <a href="#f4"><span class="ix">4</span><span class="tx">アクセスデータ・閲覧通知の強化</span></a>
+        <a href="#f5"><span class="ix">5</span><span class="tx">公開ページへのトラッキングタグ</span></a>
+        <a href="#f6"><span class="ix">6</span><span class="tx">コンテンツ運用まわりの改善</span></a>
+      </div>
+    </div>
+
+    <!-- Feature 1 : Dashboard (interactive) -->
+    <article class="feat" id="f1" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>1</b><span class="tag new">新機能</span></span>
+          <h3>コンテンツ分析ダッシュボードを公開</h3>
+          <p class="body">コンテンツごとの閲覧パフォーマンスを、KPI・月次推移・コンテンツ別ランキングで一覧できる新しいダッシュボード。サイドバーの「アクセスデータ」→「コンテンツ分析」から開けます。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>主要指標を一目で把握</b>：PV・UU・閲覧済み数・平均閲覧時間・平均読了率をサマリーカードで表示</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>期間を自由に指定</b>：過去1/3/6/12ヶ月プリセットまたはカスタム日付で、季節・キャンペーン別に比較</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>コンテンツ別ランキング</b>：PV・UU・閲覧時間の中央値・平均読了率の4軸で成果を特定</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>タグ・ステータスで絞り込み</b>：施策・状態単位で集計範囲を切り替えて相対比較</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ 期間タブを切り替えてみてください</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.plainer.jp / analytics</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="db-tabs" role="tablist">
+                <button class="db-tab" role="tab" data-range="1" aria-selected="false">1ヶ月</button>
+                <button class="db-tab" role="tab" data-range="3" aria-selected="true">3ヶ月</button>
+                <button class="db-tab" role="tab" data-range="6" aria-selected="false">6ヶ月</button>
+                <button class="db-tab" role="tab" data-range="12" aria-selected="false">12ヶ月</button>
+              </div>
+              <div class="kpis">
+                <div class="kpi"><div class="kl">PV</div><div class="kv" data-kpi="pv">—</div><div class="kd">期間合計</div></div>
+                <div class="kpi"><div class="kl">UU</div><div class="kv" data-kpi="uu">—</div><div class="kd">ユニーク</div></div>
+                <div class="kpi"><div class="kl">平均読了率</div><div class="kv" data-kpi="read">—</div><div class="kd">全コンテンツ</div></div>
+              </div>
+              <div class="chart" id="chart1"></div>
+              <div class="chart-x" id="chartx1"></div>
+              <p style="font-size:10.5px;color:var(--faint);margin-top:10px">※ 数値はデモ用のサンプル表示です</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 2 : Lead gate -->
+    <article class="feat rev" id="f2" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>2</b><span class="tag imp">改善</span></span>
+          <h3>リードゲート（フォーム）の強化</h3>
+          <p class="body">デモ閲覧前に表示するリードゲート（入力フォーム）まわりを大きく強化しました。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>選択肢（プルダウン）に対応</b>：自由入力だけでなく、用意した選択肢から選んでもらう項目を作成</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>アクセス制御（ACL）</b>：許可・ブロックするドメインや条件を設定し、対象外からの送信を制限</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>宛先付きURLでもフォーム表示</b>：<code>pl_uid</code> 付きの共有URLでも、設定に応じてリードゲートを表示</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ プルダウンを開いてみてください</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">plainer.jp / demo / lead-gate</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="mock">
+                <div class="mrow"><span class="ml">お名前</span><span class="mspace"></span><span class="field">山田 太郎</span></div>
+                <div class="mrow"><span class="ml">会社ドメイン</span><span class="mspace"></span><span class="chip blue">ACL: 許可リスト</span></div>
+                <div class="mrow" id="pd" style="cursor:pointer">
+                  <span class="ml">ご興味の領域</span><span class="mspace"></span>
+                  <span class="field" id="pdfield">選択してください
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </div>
+                <div id="pdlist" style="display:none;flex-direction:column;gap:6px;padding-left:2px">
+                  <div class="mrow pdopt" style="cursor:pointer"><span class="ml">マーケティング</span></div>
+                  <div class="mrow pdopt" style="cursor:pointer"><span class="ml">セールス</span></div>
+                  <div class="mrow pdopt" style="cursor:pointer"><span class="ml">カスタマーサクセス</span></div>
+                </div>
+                <div class="mrow" style="background:var(--tint-green);border-color:transparent"><span class="ml" style="color:var(--go-deep)">宛先付きURL（pl_uid）でも表示</span><span class="mspace"></span><span class="switch"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 3 : Guide -->
+    <article class="feat" id="f3" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>3</b><span class="tag imp">改善</span></span>
+          <h3>ガイド表現の強化</h3>
+          <p class="body">デモ内のガイド（バルーン・ポップアップ）の表現力を高めました。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>バルーンガイドにズーム/パン演出</b>：ガイド近辺を拡大してフォーカス。ページ遷移時の残像も解消</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>ポップアップのボタンを柔軟に</b>：配置・テキストの編集に加え、<b>ボタンの色も編集画面から指定</b>できます</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ ズーム演出をプレビュー</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">plainer.jp / demo / guide</span><span class="live">DEMO</span></div>
+            <div class="screen" style="display:flex;align-items:center;justify-content:center">
+              <div id="guidezoom" style="width:80%;display:flex;flex-direction:column;gap:10px;transition:transform .8s cubic-bezier(.2,.7,.2,1);transform-origin:24% 62%">
+                <div class="ghostui w40"></div>
+                <div class="ghostui w80"></div>
+                <div class="ghostui w60"></div>
+                <div style="margin-top:6px"><span class="balloon">ここをクリックすると設定が開きます <span style="display:inline-block;margin-top:8px;background:#fff;color:var(--accent-deep);font-weight:800;padding:5px 12px;border-radius:7px;font-size:11px">次へ</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 4 : Access data / notifications -->
+    <article class="feat rev" id="f4" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>4</b><span class="tag imp">改善</span></span>
+          <h3>アクセスデータ・閲覧通知の強化</h3>
+          <p class="body">閲覧データの分析と、閲覧通知の使い勝手を改善しました。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>「ユーザー種別」フィルタを複数選択に対応</b>：複数のユーザー種別でまとめて絞り込み</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>閲覧通知に「前回閲覧からの経過日数」を表示</b>：再訪のタイミングが把握しやすく</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>閲覧通知フィルタの条件追加</b>：リードゲート通過者を独立した条件で絞り込み</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ 通知フィードの表示イメージ</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.plainer.jp / notifications</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="mock">
+                <div class="mrow"><span class="chip blue">複数種別</span><span class="chip">ゲート通過者</span><span class="mspace"></span><span style="font-size:11px;color:var(--faint)">絞り込み中</span></div>
+                <div class="mrow"><div><div class="ml">A社 マーケ部が再訪</div><div style="font-size:11px;color:var(--muted)">3コンテンツを閲覧</div></div><span class="mspace"></span><span class="chip">前回から4日</span></div>
+                <div class="mrow"><div><div class="ml">B社 情報システム部が閲覧</div><div style="font-size:11px;color:var(--muted)">リードゲート通過</div></div><span class="mspace"></span><span class="chip">前回から12日</span></div>
+                <div class="mrow"><div><div class="ml">C社 購買が初回閲覧</div><div style="font-size:11px;color:var(--muted)">新規</div></div><span class="mspace"></span><span class="chip blue">NEW</span></div>
+                <p style="font-size:10.5px;color:var(--faint)">※ 表示はデモ用のサンプルです</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 5 : Tracking tag -->
+    <article class="feat" id="f5" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>5</b><span class="tag new">新機能</span></span>
+          <h3>公開ページへのトラッキングタグ埋め込み</h3>
+          <p class="body">デモの公開ページに、Meta Pixel・Google Tag Manager 等の外部トラッキングタグを埋め込めるようになりました。広告流入からツアー内コンバージョンまでの計測に活用できます。あわせて CTA クリックの計測にも対応。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>Meta Pixel / GTM などの外部タグを設定可能</b>（プロダクト単位）</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>CTAクリックを計測</b>：CTAボタンのクリックを計測し、A/Bテストの統計にも反映</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ タグ設定パネルのイメージ</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.plainer.jp / settings / tracking</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="mock">
+                <div class="mrow"><span class="ml">Meta Pixel ID</span><span class="mspace"></span><span class="field">123456789012345</span></div>
+                <div class="mrow"><span class="ml">Google Tag Manager</span><span class="mspace"></span><span class="field">GTM-XXXXXXX</span></div>
+                <div class="mrow" style="background:var(--tint-blue);border-color:transparent"><span class="ml" style="color:var(--accent-deep)">CTAクリックを計測</span><span class="mspace"></span><span class="switch"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Feature 6 : Other improvements (compact, no big demo) -->
+    <article class="feat rev" id="f6" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>6</b><span class="tag imp">改善</span></span>
+          <h3>コンテンツ運用まわりの改善</h3>
+          <p class="body">日々の運用を軽くする、細かな改善もまとめてお届けします。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>コンテンツ単位のフォント設定</b>（ブランドガバナンス）に対応</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>UTMパススルー</b>：共有リンクのUTMパラメータをCTAリンク等に引き継ぎ</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>シナリオ作成時のコンテンツ複数選択・一括追加</b>に対応</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>スマホ表示の改善</b>：PC幅コンテンツが縮小されガイド操作できない問題を解消</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>まとめての改善ハイライト</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.plainer.jp / content</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="mock">
+                <div class="mrow"><span class="chip blue">フォント設定</span><span class="mspace"></span><span class="field">Noto Sans JP</span></div>
+                <div class="mrow"><span class="chip">UTM</span><span class="mspace"></span><span style="font-size:11px;color:var(--muted)">utm_source → CTAへ引継ぎ</span></div>
+                <div class="mrow"><span class="chip blue">一括追加</span><span class="mspace"></span><span style="font-size:11px;color:var(--muted)">3コンテンツを選択中</span></div>
+                <div class="mrow"><span class="chip">スマホ最適化</span><span class="mspace"></span><span style="font-size:11px;color:var(--go-deep);font-weight:700">解消済み</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PAID SECTION -->
+    <div class="sec-head" id="paid" data-reveal>
+      <span class="sec-flag paid">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        別途ご契約が必要な機能
+      </span>
+      <h2>ご契約でご利用いただけるアップデート</h2>
+      <div class="paid-lead">以下の機能は<b>別途ご契約・設定が必要</b>です。導入をご希望の場合は PLAINER 担当者までお問い合わせください。</div>
+    </div>
+
+    <article class="feat" id="p1" data-reveal>
+      <div class="feat-grid">
+        <div class="feat-txt">
+          <span class="num"><b>1</b><span class="tag new">新機能</span></span>
+          <h3>Salesforce連携の「パッケージ方式」を公開</h3>
+          <p class="body">Salesforce連携を、<b>パッケージをインストールするだけで接続できる新方式</b>に対応。従来はカスタムオブジェクトの動的生成に管理者級の権限が必要でしたが、新方式では権限制約の厳しい企業環境でもスムーズに連携できます。</p>
+          <div class="points">
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>権限要件を大幅に軽減</b>：API有効な標準ユーザーで接続可能。最小権限ポリシーに対応</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>インストールは一度だけ</b>：本番/Sandbox別のURLを設定画面に表示（ワンクリックコピー）</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>「導入を検証」ボタン</b>：パッケージが正しく入っているか設定画面で確認</span></div>
+            <div class="pt"><span class="ico">✓</span><span class="pttx"><b>既存連携への影響なし</b>：接続中のお客様の運用は変わりません</span></div>
+          </div>
+        </div>
+        <div class="demo">
+          <div class="demo-label"><span class="pulse"></span>操作デモ ・ 「導入を検証」を押してみてください</div>
+          <div class="frame">
+            <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="url">app.plainer.jp / settings / salesforce</span><span class="live">DEMO</span></div>
+            <div class="screen">
+              <div class="mock">
+                <div class="mrow"><span class="ml">本番インストールURL</span><span class="mspace"></span><span class="field">login.salesforce.com/…<span class="chip blue">コピー</span></span></div>
+                <div class="mrow"><span class="ml">Sandbox インストールURL</span><span class="mspace"></span><span class="field">test.salesforce.com/…<span class="chip blue">コピー</span></span></div>
+                <div class="mrow"><span class="ml">接続ユーザー権限</span><span class="mspace"></span><span class="chip">標準ユーザー（API有効）</span></div>
+                <button id="verifyBtn" class="btn btn-primary" style="align-self:flex-start;padding:10px 18px">導入を検証</button>
+                <div id="verifyResult" style="display:none" class="mrow"><span class="ico" style="width:22px;height:22px;border-radius:7px;background:var(--tint-green);color:var(--go-deep);display:grid;place-items:center;margin-right:4px">✓</span><span class="ml" style="color:var(--go-deep)">パッケージは正しくインストールされています</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <p class="note">🐾 <b>各デモ枠には本番で PLAINER の実デモ（<code>iframe / product.plainer.co.jp</code>）が入るにゃ。</b> このプレビューは外部埋め込みを表示できないため、動くモックで代替表示している（本番では機能別の触れるデモに差し替え）。数値・画面はデモ用サンプルで実データではないにゃ。</p>
+
+    <!-- CTA -->
+    <section class="cta" id="cta" data-reveal>
+      <div class="wrap">
+        <h2>今月のアップデートは以上です。</h2>
+        <p>ご紹介した機能は、管理画面からそのままお使いいただけます。使い方でご不明な点は、ヘルプセンターやサポートまでお気軽にどうぞ。</p>
+        <div class="row">
+          <a class="btn btn-white" href="#">ヘルプセンターを見る</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="logo" style="font-size:16px">
+      <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M7 4h9.5a7 7 0 0 1 0 14H12v8H7V4Z" fill="none" stroke="#4EB685" stroke-width="3.4" stroke-linejoin="round"/><circle cx="19" cy="11" r="3.3" fill="#4E62E2"/></svg>
+      PLAINER
+    </span>
+    <span>© 2024 PLAINER Co., Ltd. ・ プロダクトにしゃべらせよう</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // theme toggle
+  var root=document.documentElement, tg=document.getElementById('tg');
+  function cur(){var t=root.getAttribute('data-theme'); if(t) return t;
+    return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+  tg.addEventListener('click',function(){root.setAttribute('data-theme', cur()==='dark'?'light':'dark');});
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el);});
+
+  // dashboard demo data (sample only)
+  var DATA={
+    '1':{pv:'12,480',uu:'3,210',read:'62%',bars:[40,64,52,80,58,72],x:['1週','2週','3週','4週','5週','6週']},
+    '3':{pv:'38,900',uu:'9,540',read:'59%',bars:[52,70,60,88,74,96],x:['4月','','5月','','6月','']},
+    '6':{pv:'71,200',uu:'18,300',read:'57%',bars:[44,58,66,72,84,92],x:['1月','','3月','','5月','']},
+    '12':{pv:'142,500',uu:'34,900',read:'55%',bars:[36,50,58,64,70,86],x:['前半','','','後半','','']}
+  };
+  var chart=document.getElementById('chart1'), chartx=document.getElementById('chartx1');
+  function paint(r){
+    var d=DATA[r];
+    document.querySelector('[data-kpi=pv]').textContent=d.pv;
+    document.querySelector('[data-kpi=uu]').textContent=d.uu;
+    document.querySelector('[data-kpi=read]').textContent=d.read;
+    chart.innerHTML=''; chartx.innerHTML='';
+    d.bars.forEach(function(h){var b=document.createElement('div');b.className='bar';b.style.height='6px';
+      chart.appendChild(b); requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.height=h+'%';});});});
+    d.x.forEach(function(t){var s=document.createElement('span');s.textContent=t;chartx.appendChild(s);});
+  }
+  document.querySelectorAll('.db-tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.db-tab').forEach(function(x){x.setAttribute('aria-selected','false');});
+      t.setAttribute('aria-selected','true'); paint(t.dataset.range);
+    });
+  });
+  paint('3');
+
+  // lead-gate pulldown
+  var pd=document.getElementById('pd'), list=document.getElementById('pdlist'), pf=document.getElementById('pdfield');
+  if(pd){pd.addEventListener('click',function(){list.style.display=list.style.display==='none'?'flex':'none';});
+    document.querySelectorAll('.pdopt').forEach(function(o){o.addEventListener('click',function(){
+      pf.childNodes[0].nodeValue=o.textContent+' '; list.style.display='none';});});}
+
+  // guide zoom preview (loop gently)
+  var gz=document.getElementById('guidezoom');
+  if(gz && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var on=false; setInterval(function(){on=!on; gz.style.transform=on?'scale(1.18)':'scale(1)';},1900);
+  }
+
+  // salesforce verify
+  var vb=document.getElementById('verifyBtn'), vr=document.getElementById('verifyResult');
+  if(vb){vb.addEventListener('click',function(){vb.textContent='検証中…';
+    setTimeout(function(){vb.style.display='none';vr.style.display='flex';},600);});}
+
+  // ── PLAINER demo embeds ──
+  // 本番LP（自社ドメイン）では各デモ枠に実デモを埋め込む:
+  //   <iframe src="https://product.plainer.co.jp/c/{機能別デモパス}" allow="fullscreen; autoplay" allowfullscreen></iframe>
+  // 機能別デモパスは DEMO_URLS で管理する（下は代表デモ1本を仮置き。本番は機能別に差し替え）。
+  // この Artifact プレビューは外部埋め込みが CSP でブロックされ壊れた枠になってしまうため、
+  // ここでは iframe を差し込まず、動くモックUIをそのまま見せている。
+  var REP_DEMO="https://product.plainer.co.jp/c/plainer-service/112639a5-38f2-424a-9f92-a0340c507fe4/59b58116-914a-4505-95ab-6aec2c2c1431#32991101-9882-4f5d-a3ac-f1cbc7a7fb0d";
+  var DEMO_URLS={f1:REP_DEMO,f2:REP_DEMO,f3:REP_DEMO,f4:REP_DEMO,f5:REP_DEMO,f6:REP_DEMO,p1:REP_DEMO};
+  Object.keys(DEMO_URLS).forEach(function(id){
+    var art=document.getElementById(id); if(!art) return;
+    var sc=art.querySelector('.demo .screen'); if(!sc) return;
+    var tag=document.createElement('span'); tag.className='embed-tag';
+    tag.innerHTML='<span class="rec"></span>PLAINER DEMO'; sc.appendChild(tag);
+  });
+
+  // ── auto-play: make each mock look like a live, moving demo in the preview ──
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce){
+    function cursorFor(id){
+      var art=document.getElementById(id); if(!art) return null;
+      var sc=art.querySelector('.demo .screen'); if(!sc) return null;
+      var c=document.createElement('div'); c.className='cursor';
+      c.innerHTML='<svg viewBox="0 0 24 24" fill="#fff" stroke="#1B2036" stroke-width="1.3" stroke-linejoin="round"><path d="M5 3l15 8-6.5 1.6L11 20z"/></svg>';
+      sc.appendChild(c); return {sc:sc,c:c};
+    }
+    function point(o,el){ if(!o||!el) return;
+      var sr=o.sc.getBoundingClientRect(), er=el.getBoundingClientRect();
+      o.c.style.left=(er.left-sr.left+Math.min(er.width*0.5,58))+'px';
+      o.c.style.top=(er.top-sr.top+er.height*0.5)+'px';
+    }
+    function tap(o){ if(!o) return; o.c.classList.add('click'); setTimeout(function(){o.c.classList.remove('click');},450); }
+
+    // 1) dashboard: cycle the period tabs
+    var dbC=cursorFor('f1'), tabs=document.querySelectorAll('#f1 .db-tab'), di=1;
+    if(tabs.length){(function loop(){
+      if(dbC.sc.classList.contains('live')) return;
+      var t=tabs[di]; point(dbC,t);
+      setTimeout(function(){ tap(dbC); t.click(); di=(di+1)%tabs.length; setTimeout(loop,2300); },850);
+    })();}
+
+    // 2) lead gate: open pulldown, pick an option, repeat
+    var lgC=cursorFor('f2'), pd=document.getElementById('pd'), opts=document.querySelectorAll('#f2 .pdopt'), oi=0;
+    if(pd&&opts.length){(function loop(){
+      if(lgC.sc.classList.contains('live')) return;
+      point(lgC,pd);
+      setTimeout(function(){ tap(lgC); pd.click();
+        setTimeout(function(){ var o=opts[oi%opts.length]; oi++; point(lgC,o);
+          setTimeout(function(){ tap(lgC); o.click(); setTimeout(loop,2400); },850);
+        },850);
+      },900);
+    })();}
+
+    // 3) salesforce: press 「導入を検証」, show result, reset, repeat
+    var sfC=cursorFor('p1'), vb=document.getElementById('verifyBtn'), vr=document.getElementById('verifyResult');
+    if(vb){(function loop(){
+      if(sfC.sc.classList.contains('live')) return;
+      vb.style.display=''; vb.textContent='導入を検証'; if(vr) vr.style.display='none';
+      point(sfC,vb);
+      setTimeout(function(){ tap(sfC); vb.click(); setTimeout(loop,3400); },1000);
+    })();}
+  }
+})();
+</script>
+</body>
+</html>
