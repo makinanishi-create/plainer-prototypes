@@ -129,16 +129,6 @@
   .mini .tip{position:absolute;left:20px;top:138px;background:var(--ink);color:#fff;font-size:11px;border-radius:9px;padding:8px 11px;max-width:210px;z-index:3;box-shadow:0 10px 24px rgba(0,0,0,.3)}
   .mini .tip::after{content:"";position:absolute;left:20px;top:-6px;width:11px;height:11px;background:var(--ink);transform:rotate(45deg)}
 
-  /* ===== live PLAINER demo embed ===== */
-  .demo-sub{font-size:14px;color:var(--sub);margin:-14px 0 20px;max-width:640px}
-  .demoframe{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lift);background:#fff}
-  .demobar{display:flex;align-items:center;gap:10px;background:#f6f7fb;border-bottom:1px solid var(--line);padding:9px 14px}
-  .demobar .dots{display:flex;gap:6px}.demobar .dots i{width:11px;height:11px;border-radius:50%;display:block}
-  .demobar .url{flex:1;background:#fff;border:1px solid var(--line);border-radius:7px;padding:5px 12px;font-size:11.5px;color:#8a92a0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .demobar .lbadge{font-size:10.5px;font-weight:800;color:var(--g-700);background:var(--g-100);border:1px solid var(--g-300);border-radius:999px;padding:3px 10px;white-space:nowrap}
-  .demoframe iframe{width:100%;height:620px;border:0;display:block;background:#eef0f5}
-  @media(max-width:760px){.demoframe iframe{height:460px}}
-
   /* ===== popular articles ===== */
   .pop{display:grid;grid-template-columns:1fr 1fr;gap:12px 34px}
   .pa{display:flex;align-items:center;gap:13px;padding:15px 4px;border-bottom:1px solid var(--line2)}
@@ -279,20 +269,6 @@
   </div>
 </div></section>
 
-<!-- ===== live PLAINER demo ===== -->
-<section style="padding-top:0"><div class="wrap">
-  <div class="sec-h"><div><div class="eyebrow">Try it ・ PLAINERらしさ</div><h2>読むより、触ってわかる。</h2></div></div>
-  <p class="demo-sub">ヘルプの操作説明は“触れるデモ”で。動画のように眺めるのではなく、その場で自分でクリックして進められます。下のデモを実際に触ってみてください。</p>
-  <div class="demoframe">
-    <div class="demobar">
-      <div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-      <div class="url">🔒 product.plainer.co.jp ／ PLAINERデモツアー｜初めに</div>
-      <span class="lbadge">🖐️ 触れるデモ（PLAINER）</span>
-    </div>
-    <iframe src="https://product.plainer.co.jp/c/plainercs/741e6ca6-685d-4d05-a5cb-f62498823514/85452d47-8efe-4053-93b9-6847b19f1a68#91beffce-593c-4625-b51c-ddd7b5f85cc5" title="PLAINER 触れるデモ" loading="lazy" allow="fullscreen"></iframe>
-  </div>
-</div></section>
-
 <!-- ===== popular articles ===== -->
 <section style="padding-top:0"><div class="wrap">
   <div class="sec-h">
@@ -394,6 +370,17 @@
   .wrap{max-width:1000px;margin:0 auto;padding:36px 24px 80px}
   .lead{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--p-500);text-transform:uppercase;margin-bottom:20px}
 
+  /* interactive demo */
+  .demosec h2{font-size:22px;font-weight:800;color:var(--p-900);margin:0 0 6px;letter-spacing:-.01em}
+  .demosec p{font-size:14px;color:var(--sub);margin:0 0 18px;max-width:600px}
+  .demoframe{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lift);background:#fff}
+  .demobar{display:flex;align-items:center;gap:10px;background:#f6f7fb;border-bottom:1px solid var(--line);padding:9px 14px}
+  .demobar .dots{display:flex;gap:6px}.demobar .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .demobar .url{flex:1;background:#fff;border:1px solid var(--line);border-radius:7px;padding:5px 12px;font-size:11.5px;color:#8a92a0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .demobar .lbadge{font-size:10.5px;font-weight:800;color:var(--g-700);background:var(--g-100);border:1px solid var(--g-300);border-radius:999px;padding:3px 10px;white-space:nowrap}
+  .demoframe iframe{width:100%;height:600px;border:0;display:block;background:#eef0f5}
+  @media(max-width:760px){.demoframe iframe{height:440px}}
+
   /* steps (vertical timeline) */
   .steps{position:relative;margin:0 0 10px}
   .step{position:relative;display:grid;grid-template-columns:52px 1fr;gap:20px;padding-bottom:20px}
@@ -453,6 +440,22 @@
   <h1>PLAINERへようこそ。</h1>
   <p>導入されたお客様へ。初めてのデモ公開までを5ステップでご案内します。順番に進めれば、迷わず立ち上げが完了します。</p>
 </div></div>
+
+<!-- interactive demo -->
+<div class="wrap" style="padding-bottom:0">
+  <div class="demosec">
+    <h2>まずは、触ってみる。</h2>
+    <p>これから紹介する5ステップの流れを、実際のPLAINERデモで体験できます。動画のように眺めるのではなく、その場でクリックして進められます。</p>
+    <div class="demoframe">
+      <div class="demobar">
+        <div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
+        <div class="url">🔒 product.plainer.co.jp ／ PLAINERデモツアー｜初めに</div>
+        <span class="lbadge">🖐️ 触れるデモ（PLAINER）</span>
+      </div>
+      <iframe src="https://product.plainer.co.jp/c/plainercs/741e6ca6-685d-4d05-a5cb-f62498823514/85452d47-8efe-4053-93b9-6847b19f1a68#91beffce-593c-4625-b51c-ddd7b5f85cc5" title="PLAINER 触れるデモ" loading="lazy" allow="fullscreen"></iframe>
+    </div>
+  </div>
+</div>
 
 <!-- steps -->
 <div class="wrap">
